@@ -1,0 +1,33 @@
+{
+  "name": "fraq-plugin-status",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Status query plugin for Fraq",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.mjs",
+  "typings": "dist/index.d.mts",
+  "scripts": {
+    "build": "tsdown",
+    "prepack": "pnpm build"
+  },
+  "keywords": [],
+  "author": "Wesley-Young",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wesley-Young/fraq-plugin-status.git"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@11.7.0",
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.0",
+    "@types/node": "^24.13.2",
+    "tsdown": "^0.22.2",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  },
+  "peerDependencies": {
+    "@fraqjs/fraq": "^0.10.0"
+  }
+}
