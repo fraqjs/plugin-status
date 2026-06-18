@@ -21,7 +21,8 @@ export type StatusInfoLayoutComponent =
   | '$milky-version'
   | '$impl-info'
   | '$uptime'
-  | (string & {});
+  | (string & {})
+  | (() => string | Promise<string>);
 
 export interface StatusPluginOptions {
   enableCommand?: boolean;
@@ -72,7 +73,10 @@ export const StatusPlugin = definePlugin({
       '$uptime',
     ];
 
-    const componentProviders: Record<StatusInfoLayoutComponent, (() => Promise<string>) | undefined> = {
+    const componentProviders: Record<
+      Extract<StatusInfoLayoutComponent, string>,
+      (() => Promise<string>) | undefined
+    > = {
       $title: async () => `===== ${title} =====`,
       $platform: async () => `运行平台: ${process.platform} (${process.arch})`,
       '$fraq-version': async () => `Fraq 版本: ${await status.getFraqVersion()}`,
@@ -86,6 +90,14 @@ export const StatusPlugin = definePlugin({
     ctx.router.command(commandName || '#fraq').execute(async (session) => {
       const components = await Promise.all(
         layout.map(async (component) => {
+          if (typeof component === 'function') {
+            try {
+              const result = component();
+              return result instanceof Promise ? await result : result;
+            } catch (error) {
+              return `组件渲染错误: ${(error as Error).message}`;
+            }
+          }
           const provider = componentProviders[component];
           if (provider) {
             return await provider();

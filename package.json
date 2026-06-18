@@ -1,7 +1,7 @@
 {
   "name": "fraq-plugin-status",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Status query plugin for Fraq",
   "files": [
     "dist"
