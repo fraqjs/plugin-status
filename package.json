@@ -16,7 +16,7 @@
   "author": "Wesley-Young",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Wesley-Young/fraq-plugin-status.git"
+    "url": "git+https://github.com/fraqjs/plugin-status.git"
   },
   "license": "MIT",
   "packageManager": "pnpm@11.7.0",
