@@ -1,6 +1,6 @@
 # fraq-plugin-status
 
-用于 [Fraq](https://fraq.ntqqrev.org/) 的状态查询插件，提供了状态查询服务，并且默认提供了一个基于该服务的状态查询命令。
+提供 Fraq 状态查询服务以及基于该服务的状态查询命令。
 
 ## 安装与配置
 
